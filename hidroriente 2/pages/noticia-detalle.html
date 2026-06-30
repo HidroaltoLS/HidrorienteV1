@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Noticia — Hidroriente S.A.">
+  <title>Noticia — Hidroriente S.A.</title>
+  <link rel="icon" type="image/png" href="../assets/icons/fabicon-hidroriente.png">
+  <link rel="apple-touch-icon" href="../assets/icons/fabicon-hidroriente.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    :root {
+      --green:       #4FA637;
+      --green-dark:  #2e6020;
+      --green-light: #93BF34;
+      --green-pale:  #edf7e8;
+      --green-mid:   #6db82e;
+      --font-display: 'Montserrat', sans-serif;
+      --font-body:    'Montserrat', sans-serif;
+    }
+
+    .site-header { 
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-sm);
+      padding: 12px 0;
+    }
+    .site-header .nav-link { color: var(--gray-800); }
+    .site-header .nav-logo-img { filter: none; }
+
+    .news-detail-hero {
+      background:
+        linear-gradient(135deg, rgba(19,26,22,.92) 0%, rgba(46,96,32,.82) 48%, rgba(111,145,40,.76) 100%),
+        url('../assets/images/hero-main.jpg') center/cover;
+      position: relative;
+      padding: 126px 0 78px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .news-detail-hero::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0;
+      height: 160px;
+      background: linear-gradient(to top, rgba(19,26,22,.38), transparent);
+      pointer-events: none;
+    }
+
+    .news-detail-shell {
+      position: relative;
+      z-index: 1;
+      max-width: 880px;
+      margin: 0;
+      text-align: left;
+    }
+
+    .news-detail-content {
+      max-width: 880px;
+      padding: 42px 0 36px;
+    }
+
+    .news-detail-meta {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .news-detail-meta .news-card-date {
+      color: rgba(255,255,255,.68);
+    }
+
+    .news-detail-title {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: 24px;
+      line-height: 1.2;
+      color: var(--white);
+    }
+
+    .news-detail-body {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--gray-600);
+    }
+
+    .news-detail-body p {
+      margin-bottom: 20px;
+    }
+
+    .news-detail-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,.76);
+      margin-bottom: 40px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .news-detail-back:hover {
+      color: var(--white);
+    }
+
+    .news-media-frame {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      border-radius: 28px;
+      overflow: hidden;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.26);
+      box-shadow: 0 32px 90px rgba(0,0,0,.24);
+    }
+
+    .news-media-frame img,
+    .news-media-frame video,
+    .news-media-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      object-fit: cover;
+    }
+
+    .news-media-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      text-align: center;
+      color: rgba(255,255,255,.82);
+      background: linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.04));
+    }
+
+    .news-media-placeholder .bi {
+      display: block;
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      margin-bottom: 18px;
+      color: rgba(255,255,255,.9);
+    }
+
+    .news-media-placeholder strong {
+      display: block;
+      color: var(--white);
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .news-media-placeholder span:last-child {
+      display: block;
+      max-width: 320px;
+      font-size: .9rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,.62);
+    }
+
+    .news-media-caption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 14px;
+      color: rgba(255,255,255,.66);
+      font-size: .82rem;
+    }
+
+    .news-detail-section .news-media-caption {
+      color: var(--gray-600);
+    }
+
+    .news-detail-section {
+      background: linear-gradient(180deg, var(--white), var(--off-white));
+    }
+
+    .news-detail-layout {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .news-detail-article {
+      padding: 0;
+    }
+
+    .news-detail-body p:first-child {
+      font-size: 1.14rem;
+      color: var(--gray-800);
+    }
+
+    .news-extra-media {
+      max-width: 1120px;
+      margin: 56px auto 0;
+    }
+
+    .news-extra-media .news-media-frame {
+      background: var(--white);
+      border: 1.5px dashed rgba(79,166,55,.28);
+      box-shadow: none;
+    }
+
+    .news-extra-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--gray-400);
+      background: var(--white);
+    }
+
+    .news-extra-placeholder .bi {
+      display: block;
+      font-size: 2.6rem;
+      margin-bottom: 12px;
+      color: rgba(79,166,55,.45);
+    }
+
+    .news-extra-placeholder span:last-child {
+      display: block;
+      font-size: .85rem;
+      color: var(--gray-400);
+    }
+
+    .recent-news-section {
+      background: var(--white);
+      padding-top: 84px;
+    }
+
+    .recent-news-list {
+      max-width: 1120px;
+      margin: 0 auto;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .recent-news-item {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--gray-200);
+      transition: transform var(--transition);
+    }
+
+    .recent-news-item:hover {
+      transform: translateX(4px);
+    }
+
+    .recent-news-thumb {
+      aspect-ratio: 16 / 10;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--gray-100);
+    }
+
+    .recent-news-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .recent-news-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .recent-news-title {
+      color: var(--black);
+      font-size: 1.05rem;
+      line-height: 1.35;
+      margin-bottom: 6px;
+    }
+
+    .recent-news-desc {
+      font-size: .9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .recent-news-arrow {
+      color: var(--green);
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    @media(max-width: 1024px) {
+      .news-detail-layout { max-width: 760px; }
+    }
+
+    @media(max-width: 640px) {
+      .news-detail-hero {
+        padding: 102px 0 48px;
+      }
+
+      .news-detail-title {
+        font-size: 1.6rem;
+      }
+
+      .recent-news-item {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .recent-news-thumb {
+        max-width: 100%;
+      }
+
+      .recent-news-arrow {
+        display: none;
+      }
+    }
+
+    .nav-logo-img {
+      height: 70px;
+      width: auto;
+      object-fit: contain;
+      filter: none;
+      transition: filter 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <nav class="nav">
+      <a href="../index.html" class="nav-logo">
+        <img src="../assets/logos/logo.png" alt="Hidroriente" class="nav-logo-img">
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html" class="nav-link">Inicio</a></li>
+        <li><a href="../pages/sobre-nosotros.html" class="nav-link">Sobre Nosotros</a></li>
+        <li><a href="../pages/social.html" class="nav-link">Social</a></li>
+        <li><a href="../pages/ambiental.html" class="nav-link">Ambiental</a></li>
+        <li><a href="../pages/noticias.html" class="nav-link active">Noticias</a></li>
+        <li><a href="../pages/contacto.html" class="nav-link nav-cta">
+          <span class="btn btn--primary" style="padding:10px 22px;font-size:.84rem">Contáctanos</span>
+        </a></li>
+      </ul>
+      <button class="nav-hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<nav class="nav-mobile">
+  <button class="nav-mobile-close" aria-label="Cerrar"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+  <a href="../index.html" class="nav-link">Inicio</a>
+  <a href="../pages/sobre-nosotros.html" class="nav-link">Sobre Nosotros</a>
+  <a href="../pages/social.html" class="nav-link">Social</a>
+  <a href="../pages/ambiental.html" class="nav-link">Ambiental</a>
+  <a href="../pages/noticias.html" class="nav-link">Noticias</a>
+  <a href="../pages/contacto.html" class="nav-link">Contacto</a>
+</nav>
+
+<!-- ══ NOTICIA DETALLE ══ -->
+<section class="news-detail-hero">
+  <div class="container">
+    <div class="news-detail-shell">
+      <div class="news-detail-content">
+        <a href="noticias.html" class="news-detail-back">← Volver a noticias</a>
+        
+        <div class="news-detail-meta">
+          <span class="tag" id="newsCategory">Categoría</span>
+          <span class="news-card-date" id="newsDate">Fecha</span>
+          <span class="news-card-date" id="newsReadTimeHero">Lectura</span>
+        </div>
+
+        <h1 class="news-detail-title" id="newsTitle">Título de la noticia</h1>
+        <p class="hero-sub" id="newsDescription" style="color: rgba(255,255,255,.8);">Descripción</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTENIDO ══ -->
+<section class="section news-detail-section">
+  <div class="container">
+    <div class="news-detail-layout">
+      <article class="news-detail-article">
+        <div class="news-detail-body" id="newsContent">
+          <!-- Contenido dinámico -->
+        </div>
+      </article>
+    </div>
+
+    <div class="news-extra-media" id="newsExtraMedia">
+      <div class="news-media-frame">
+        <div class="news-extra-placeholder">
+          <div>
+            <span class="bi bi-image" aria-hidden="true"></span>
+            <span>Foto o video</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NOTICIAS RECIENTES ══ -->
+<section class="section recent-news-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Noticias recientes</div>
+      <h2>Más novedades del proyecto</h2>
+    </div>
+    <div class="recent-news-list" id="recentNews">
+      <!-- Se cargará dinámicamente -->
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="../assets/logos/logo.png" alt="Hidroriente" style="height:70px;width:auto;object-fit:contain;filter:brightness(0) invert(1)" onerror="this.style.display='none'">
+          <div class="footer-logo-mark" id="footerFallback" style="display:none">H</div>
+        </div>
+        <p class="footer-tagline">"Energía limpia. Compromiso humano."</p>
+        <p class="footer-desc">Proyecto Hidroeléctrico Alto Machinaza · 100 MW · Zamora Chinchipe, Ecuador.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social">f</a>
+          <a href="#" class="footer-social">ig</a>
+          <a href="#" class="footer-social">in</a>
+          <a href="#" class="footer-social"><i class="bi bi-youtube" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Empresa</h5>
+        <nav class="footer-links">
+          <a href="../pages/sobre-nosotros.html">Sobre Nosotros</a>
+          <a href="../pages/social.html">Social</a>
+          <a href="../pages/ambiental.html">Ambiental</a>
+          <a href="../pages/noticias.html">Noticias</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h5>Responsabilidad</h5>
+        <nav class="footer-links">
+          <a href="../pages/social.html">Social</a>
+          <a href="../pages/ambiental.html">Ambiental</a>
+          <a href="../pages/contacto.html#canal-etico">Canal Ético</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <div class="footer-contact-item"><i class="bi bi-geo-alt" aria-hidden="true"></i><span>Zamora Chinchipe, Ecuador</span></div>
+        <div class="footer-contact-item"><i class="bi bi-envelope" aria-hidden="true"></i><span>info@hidroriente.com.ec</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Hidroriente S.A. Todos los derechos reservados.</span>
+      <span class="footer-credit">Desarrollo y diseño: <a href="https://lsartstudios.com" target="_blank" rel="noopener">LS Art Gallery &amp; Studio</a></span>
+      <div style="display:flex;gap:20px">
+        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:3f950a81-88f4-4bac-9480-9a20771fda4f" target="_blank" rel="noopener">Política de privacidad</a>
+        <a href="#">Términos</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../data/noticias.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  const categoryLabels = {
+    operaciones: 'Operaciones',
+    social: 'Social',
+    ambiental: 'Ambiental',
+    seguridad: 'Seguridad',
+    institucional: 'Institucional'
+  };
+
+  const categoryTagClasses = {
+    ambiental: 'tag--green',
+    social: 'tag--blue'
+  };
+
+  const categoryFallbackImages = {
+    operaciones: 'assets/images/proyecto-foto.jpg',
+    social: 'assets/images/24022026-_DSC4200.jpg',
+    ambiental: 'assets/images/area-ambiental.jpg',
+    seguridad: 'assets/images/area-operaciones.jpg',
+    institucional: 'assets/images/hero-sobre.jpg'
+  };
+
+  const loadNewsData = async () => {
+    if (window.HIDRORIENTE_NOTICIAS) {
+      return window.HIDRORIENTE_NOTICIAS;
+    }
+
+    const response = await fetch('../data/noticias.json');
+    return response.json();
+  };
+
+  const escapeHTML = (value) => String(value || '').replace(/[&<>"']/g, (char) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  }[char]));
+
+  const resolveMediaPath = (src) => {
+    if (!src) return '';
+    if (/^(https?:|data:|\/|\.\/|\.\.\/)/.test(src)) return src;
+    return '../' + src.replace(/^\/+/, '');
+  };
+
+  const getCategoryLabel = (category) => {
+    return categoryLabels[category] || category.charAt(0).toUpperCase() + category.slice(1);
+  };
+
+  const getCategoryTag = (category) => {
+    return categoryTagClasses[category] || 'tag--gray';
+  };
+
+  const getReadingTime = (html) => {
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = html || '';
+    const words = wrapper.textContent.trim().split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.ceil(words / 180));
+  };
+
+  const normalizeMediaItem = (item, noticia) => {
+    if (!item) return null;
+    const type = item.tipo || item.type || (item.video ? 'video' : 'image');
+    const src = item.src || item.url || item.imagen || item.image || item.video;
+
+    if (!src) return null;
+
+    return {
+      type: type === 'video' ? 'video' : 'image',
+      src,
+      poster: item.poster || noticia.poster || noticia.imagen || '',
+      alt: item.alt || noticia.titulo,
+      caption: item.leyenda || item.caption || noticia.mediaLeyenda || ''
+    };
+  };
+
+  const getNewsMedia = (noticia, includeFallback = true) => {
+    const items = [];
+
+    if (Array.isArray(noticia.media)) {
+      noticia.media.forEach(item => {
+        const normalized = normalizeMediaItem(item, noticia);
+        if (normalized) items.push(normalized);
+      });
+    } else if (noticia.media && typeof noticia.media === 'object') {
+      const normalized = normalizeMediaItem(noticia.media, noticia);
+      if (normalized) items.push(normalized);
+    }
+
+    if (noticia.imagen) {
+      items.push({
+        type: 'image',
+        src: noticia.imagen,
+        poster: '',
+        alt: noticia.titulo,
+        caption: noticia.mediaLeyenda || ''
+      });
+    }
+
+    if (noticia.video) {
+      items.push({
+        type: 'video',
+        src: noticia.video,
+        poster: noticia.poster || noticia.imagen || '',
+        alt: noticia.titulo,
+        caption: noticia.mediaLeyenda || ''
+      });
+    }
+
+    if (!items.length && includeFallback) {
+      items.push({
+        type: 'image',
+        src: categoryFallbackImages[noticia.categoria] || 'assets/images/hero-main.jpg',
+        poster: '',
+        alt: noticia.titulo,
+        caption: ''
+      });
+    }
+
+    return items;
+  };
+
+  const getVideoEmbedUrl = (src) => {
+    const url = String(src || '');
+    const youtubeWatch = url.match(/[?&]v=([^&]+)/);
+    const youtubeShort = url.match(/youtu\.be\/([^?&]+)/);
+
+    if (youtubeWatch) return 'https://www.youtube.com/embed/' + youtubeWatch[1];
+    if (youtubeShort) return 'https://www.youtube.com/embed/' + youtubeShort[1];
+    return url;
+  };
+
+  const renderMediaItem = (item) => {
+    const src = resolveMediaPath(item.src);
+
+    if (item.type === 'video') {
+      const poster = item.poster ? ` poster="${escapeHTML(resolveMediaPath(item.poster))}"` : '';
+
+      if (/\.(mp4|webm|ogg)(\?.*)?$/i.test(src)) {
+        return `<video controls${poster}><source src="${escapeHTML(src)}"></video>`;
+      }
+
+      return `<iframe src="${escapeHTML(getVideoEmbedUrl(src))}" title="${escapeHTML(item.alt)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+    }
+
+    return `<img src="${escapeHTML(src)}" alt="${escapeHTML(item.alt)}" onerror="this.closest('.news-media-frame').innerHTML='<div class=&quot;news-media-placeholder&quot;><div><span class=&quot;bi bi-image&quot; aria-hidden=&quot;true&quot;></span><strong>Multimedia de la noticia</strong><span>Imagen o video destacado para acompañar esta publicación.</span></div></div>'">`;
+  };
+
+  const getExtraMediaItem = (noticia) => {
+    if (noticia.mediaExtra) {
+      return normalizeMediaItem(noticia.mediaExtra, noticia);
+    }
+
+    if (noticia.extraImagen) {
+      return {
+        type: 'image',
+        src: noticia.extraImagen,
+        poster: '',
+        alt: noticia.titulo,
+        caption: noticia.extraMediaLeyenda || ''
+      };
+    }
+
+    if (noticia.extraVideo) {
+      return {
+        type: 'video',
+        src: noticia.extraVideo,
+        poster: noticia.extraPoster || '',
+        alt: noticia.titulo,
+        caption: noticia.extraMediaLeyenda || ''
+      };
+    }
+
+    return getNewsMedia(noticia, false)[1] || null;
+  };
+
+  const renderExtraMediaSlot = (noticia) => {
+    const container = document.getElementById('newsExtraMedia');
+    const item = getExtraMediaItem(noticia);
+
+    if (!item) {
+      container.innerHTML = `
+        <div class="news-media-frame">
+          <div class="news-extra-placeholder">
+            <div>
+              <span class="bi bi-image" aria-hidden="true"></span>
+              <span>Foto o video</span>
+            </div>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = `
+      <div class="news-media-frame">${renderMediaItem(item)}</div>
+      ${item.caption ? `<div class="news-media-caption"><span>${escapeHTML(item.caption)}</span></div>` : ''}
+    `;
+  };
+
+  const getRecentNewsImage = (noticia) => {
+    if (noticia.imagen) return resolveMediaPath(noticia.imagen);
+    if (noticia.poster) return resolveMediaPath(noticia.poster);
+    return resolveMediaPath(categoryFallbackImages[noticia.categoria] || 'assets/images/hero-main.jpg');
+  };
+
+  const renderRecentNews = (noticias, currentId) => {
+    const container = document.getElementById('recentNews');
+    const recent = noticias.filter(n => n.id !== currentId).slice(0, 3);
+
+    if (!recent.length) {
+      container.innerHTML = '<p style="color:var(--gray-600)">No hay más noticias recientes por ahora.</p>';
+      return;
+    }
+
+    container.innerHTML = recent.map(noticia => `
+      <a href="noticia-detalle.html?id=${encodeURIComponent(noticia.id)}" class="recent-news-item">
+        <div class="recent-news-thumb">
+          <img src="${escapeHTML(getRecentNewsImage(noticia))}" alt="${escapeHTML(noticia.titulo)}" onerror="this.style.display='none'">
+        </div>
+        <div>
+          <div class="recent-news-meta">
+            <span class="tag ${getCategoryTag(noticia.categoria)}">${getCategoryLabel(noticia.categoria)}</span>
+            <span class="news-card-date">${escapeHTML(noticia.fecha)}</span>
+          </div>
+          <h3 class="recent-news-title">${escapeHTML(noticia.titulo)}</h3>
+          <p class="recent-news-desc">${escapeHTML(noticia.descripcion)}</p>
+        </div>
+        <span class="recent-news-arrow" aria-hidden="true">→</span>
+      </a>
+    `).join('');
+  };
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const params = new URLSearchParams(window.location.search);
+    const newsId = params.get('id');
+    
+    if (!newsId) {
+      window.location.href = 'noticias.html';
+      return;
+    }
+
+    try {
+      const data = await loadNewsData();
+      const noticia = data.noticias.find(n => n.id === newsId);
+
+      if (!noticia) {
+        window.location.href = 'noticias.html';
+        return;
+      }
+
+      document.title = noticia.titulo + ' — Hidroriente S.A.';
+      document.querySelector('meta[name="description"]').setAttribute('content', noticia.descripcion);
+
+      const categoryLabel = getCategoryLabel(noticia.categoria);
+      const readingTime = getReadingTime(noticia.contenido);
+
+      document.getElementById('newsTitle').textContent = noticia.titulo;
+      document.getElementById('newsDescription').textContent = noticia.descripcion;
+      document.getElementById('newsDate').textContent = noticia.fecha;
+      document.getElementById('newsReadTimeHero').textContent = `${readingTime} min de lectura`;
+      document.getElementById('newsCategory').textContent = categoryLabel;
+      document.getElementById('newsCategory').className = 'tag ' + getCategoryTag(noticia.categoria);
+      document.getElementById('newsContent').innerHTML = noticia.contenido;
+
+      renderExtraMediaSlot(noticia);
+      renderRecentNews(data.noticias, newsId);
+    } catch (error) {
+      console.error('Error cargando noticias:', error);
+      document.getElementById('newsTitle').textContent = 'No se pudo cargar la noticia';
+      document.getElementById('newsDescription').textContent = 'Intenta volver a la sección de noticias.';
+      document.getElementById('newsContent').innerHTML = '<p>No se pudo cargar el contenido de esta noticia en este momento.</p>';
+    }
+  });
+</script>
+</body>
+</html>

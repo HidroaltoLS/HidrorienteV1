@@ -1,0 +1,83 @@
+════════════════════════════════════════════════════════════════
+  HIDRORIENTE S.A. — Sitio Web Corporativo
+  Proyecto Hidroeléctrico Alto Machinaza · Zamora Chinchipe
+════════════════════════════════════════════════════════════════
+
+ESTRUCTURA DE CARPETAS:
+  hidroriente/
+  ├── index.html                    ← PÁGINA DE INICIO (abre esto)
+  ├── css/style.css                 ← Estilos globales
+  ├── js/main.js                    ← JavaScript global
+  ├── pages/
+  │   ├── sobre-nosotros.html
+  │   ├── social.html
+  │   ├── ambiental.html
+  │   ├── noticias.html
+  │   └── contacto.html
+  └── assets/
+      ├── logos/
+      │   ├── logo.png              ← Logo principal (PNG transparente)
+      │   └── favicon.png           ← Ícono navegador (32x32px)
+      └── images/
+          ├── hero-main.jpg         ← Hero inicio (1920x1080)
+          ├── hero-sobre.jpg
+          ├── hero-social.jpg
+          ├── hero-ambiental.jpg
+          ├── hero-noticias.jpg
+          ├── hero-contacto.jpg
+          ├── area-social.jpg
+          ├── area-ambiental.jpg
+          ├── area-operaciones.jpg
+          ├── area-noticias.jpg
+          ├── proyecto-foto.jpg
+          ├── construccion.jpg
+          ├── cacao.jpg
+          ├── brigada.jpg
+          ├── ambiental-foto.jpg
+          ├── noticia-1.jpg
+          ├── noticia-2.jpg
+          └── noticia-3.jpg
+
+════════════════════════════════════════════════════════════════
+CÓMO ABRIR:
+════════════════════════════════════════════════════════════════
+
+  Doble clic en index.html — se abre en Chrome/Edge/Firefox.
+  No requiere instalación de nada.
+
+  Con servidor local (mejor para desarrollo):
+    python -m http.server 8000
+    Luego: http://localhost:8000
+
+════════════════════════════════════════════════════════════════
+PERSONALIZACIÓN RÁPIDA:
+════════════════════════════════════════════════════════════════
+
+  LOGO:     Coloca assets/logos/logo.png (PNG transparente, 200x60px)
+  IMÁGENES: Coloca en assets/images/ con los nombres de la lista
+  COLORES:  Edita css/style.css — busca :root { --green: #00704A ... }
+  TEXTOS:   Edita cada .html directamente en un editor de texto
+  TELÉFONO: Busca "+593 7 XXX XXXX" y reemplaza en todos los .html
+  CORREO:   Busca "info@hidroriente.com.ec" y reemplaza
+  VIDEO:    En index.html busca VIDEO_ID y reemplaza con tu ID de YouTube
+  MAPA:     En contacto.html descomenta el <iframe> de Google Maps
+
+════════════════════════════════════════════════════════════════
+PUBLICAR EN INTERNET:
+════════════════════════════════════════════════════════════════
+
+  Netlify (gratis, más fácil):
+    1. Ve a netlify.com
+    2. Arrastra esta carpeta al panel
+    3. Listo — URL pública instantánea
+
+  GitHub Pages (gratis):
+    1. Sube a un repositorio en github.com
+    2. Settings → Pages → Source: main
+
+  Hosting tradicional:
+    Sube los archivos por FTP y apunta tu dominio.
+
+════════════════════════════════════════════════════════════════
+  "Energía limpia. Compromiso humano." — Hidroriente S.A.
+════════════════════════════════════════════════════════════════

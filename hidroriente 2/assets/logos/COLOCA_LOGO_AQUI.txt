@@ -1,0 +1,6 @@
+Coloca aquí el logo de Hidroriente:
+
+  logo.png      — Logo principal, fondo transparente, ~200x60px
+  favicon.png   — Ícono del navegador, 32x32px o 64x64px
+
+Si no hay logo, el sitio muestra automáticamente la letra "H" en verde.

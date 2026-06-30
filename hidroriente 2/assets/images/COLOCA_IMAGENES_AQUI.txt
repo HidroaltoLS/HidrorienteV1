@@ -1,0 +1,30 @@
+Coloca aquí las imágenes del sitio con estos nombres exactos:
+
+HEROES (1920x1080px recomendado):
+  hero-main.jpg       — Hero página de inicio
+  hero-sobre.jpg      — Hero Sobre Nosotros
+  hero-social.jpg     — Hero Social y Comunitario
+  hero-ambiental.jpg  — Hero Ambiental
+  hero-noticias.jpg   — Hero Noticias
+  hero-contacto.jpg   — Hero Contacto
+
+ÁREAS (proporción vertical 3:4):
+  area-social.jpg
+  area-ambiental.jpg
+  area-operaciones.jpg
+  area-noticias.jpg
+
+CONTENIDO:
+  proyecto-foto.jpg   — Foto general del proyecto
+  construccion.jpg    — Obras de construcción
+  cacao.jpg           — Proyecto Cacao
+  brigada.jpg         — Brigadas médicas
+  ambiental-foto.jpg  — Gestión ambiental
+
+NOTICIAS (16:10):
+  noticia-1.jpg
+  noticia-2.jpg
+  noticia-3.jpg
+
+Formatos aceptados: JPG, PNG
+Si una imagen no existe, el sitio muestra un placeholder automáticamente.

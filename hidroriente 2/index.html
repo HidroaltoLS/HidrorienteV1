@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hidroriente S.A. — Proyecto Hidroeléctrico Alto Machinaza, 100 MW de energía renovable en Zamora Chinchipe, Ecuador. Energía limpia. Compromiso humano.">
+  <title>Hidroriente S.A. — Energía Limpia. Compromiso Humano.</title>
+  <link rel="icon" type="image/png" href="assets/icons/fabicon-hidroriente.png">
+  <link rel="apple-touch-icon" href="assets/icons/fabicon-hidroriente.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── OVERRIDES: Montserrat + nuevos verdes Hidroriente ── */
+    :root {
+      --green:       #4FA637;
+      --green-dark:  #2e6020;
+      --green-light: #93BF34;
+      --green-pale:  #edf7e8;
+      --green-mid:   #6db82e;
+      --font-display: 'Montserrat', sans-serif;
+      --font-body:    'Montserrat', sans-serif;
+    }
+
+    /* Hero inicial: foto limpia, sin degradados encima */
+    .hero-bg {
+      background: #11180f;
+    }
+    .hero .hero-bg-img {
+      opacity: 1;
+    }
+    .hero-bg::after {
+      background: transparent;
+    }
+    .hero-bg::before {
+      background: transparent;
+    }
+    .hero h1,
+    .hero-sub {
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+    }
+
+    /* Eyebrow dot con verde claro */
+    .hero-eyebrow-dot { background: #93BF34; }
+
+    /* h1 em en verde claro */
+    .hero h1 em { color: #93BF34; font-style: italic; }
+
+    /* Botón primario con degradado de los dos verdes */
+    .btn--primary {
+      background: linear-gradient(135deg, #4FA637 0%, #93BF34 100%);
+      box-shadow: 0 4px 20px rgba(79,166,55,0.35);
+    }
+    .btn--primary:hover {
+      background: linear-gradient(135deg, #93BF34 0%, #4FA637 100%);
+      box-shadow: 0 8px 32px rgba(79,166,55,0.45);
+    }
+
+    /* Stats cards con el verde claro como acento */
+    .hero-eyebrow { border-color: rgba(147,191,52,0.35); background: rgba(79,166,55,0.12); }
+
+    /* Impact section: degradado con los dos verdes */
+    .impact-section {
+      background: linear-gradient(135deg, #4FA637 0%, #93BF34 100%);
+    }
+
+    /* CTA section */
+    .cta-section {
+      background: linear-gradient(135deg, #4FA637 0%, #93BF34 100%);
+    }
+
+    /* Eyebrow line */
+    .section-header .eyebrow { color: #4FA637; }
+    .section-header .eyebrow::before { background: #4FA637; }
+
+    /* Cuadros de datos: mismo lenguaje visual, fuera del hero */
+    .intro-numbers {
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid rgba(79,166,55,0.16);
+      border-radius: 12px;
+      background: rgba(79,166,55,0.12);
+      box-shadow: 0 18px 44px rgba(47,107,43,0.12);
+    }
+    .intro-number {
+      border-left: 0;
+      border-radius: 0;
+      background: rgba(255,255,255,0.9);
+      padding: 28px 24px;
+      text-align: center;
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+    .intro-number:hover {
+      background: #fff;
+      transform: translateY(-2px);
+    }
+    .intro-number-val { color: #2e6020; }
+    .intro-number-label {
+      color: #5a6b63;
+      letter-spacing: 0.3px;
+    }
+
+    .impact-grid {
+      background: rgba(255,255,255,0.16);
+      border-color: rgba(255,255,255,0.18);
+      box-shadow: 0 24px 64px rgba(20,72,20,0.18);
+    }
+    .impact-item {
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(12px);
+    }
+    .impact-item:hover {
+      background: rgba(255,255,255,0.18);
+    }
+
+    /* btn ghost */
+    .btn--ghost { color: #4FA637; }
+    .btn--outline-dark { color: #4FA637; border-color: #4FA637; }
+    .btn--outline-dark:hover { background: #4FA637; color: white; }
+
+    /* Tag verde */
+    .tag--green { background: #edf7e8; color: #2e6020; }
+
+    /* Footer logo mark */
+    .footer-logo-mark { background: linear-gradient(135deg, #4FA637, #93BF34); }
+    .footer-tagline { color: #93BF34; }
+
+    /* Footer social hover */
+    .footer-social:hover { background: #4FA637; }
+
+    /* Area card ghost btn */
+    .area-card .btn--ghost { color: #93BF34; }
+
+    /* Program card icon bg */
+    .program-card-icon { background: #edf7e8; }
+
+    /* section header eyebrow center */
+    .section-header--center .eyebrow { color: #4FA637; }
+
+    /* Scroll line */
+    .hero-scroll-line {
+      background: linear-gradient(to bottom, rgba(147,191,52,0.6), transparent);
+    }
+
+    /* ── LOGO EN HEADER: solo imagen, sin texto ni fallback H ── */
+    .nav-logo-fallback { display: none !important; }
+    .nav-logo-text, .nav-logo-sub { display: none !important; }
+    .nav-logo-img {
+      display: block !important;
+      height: 70px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1); /* blanco sobre hero oscuro */
+      transition: filter 0.3s ease;
+    }
+    /* Cuando el header scrollea a blanco, mostrar logo a color */
+    .site-header.scrolled .nav-logo-img {
+      filter: none;
+    }
+
+    /* ── TIPOGRAFÍA MONTSERRAT: ajustar pesos ── */
+    h1, h2, h3, h4, h5 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    h1 { font-weight: 800; letter-spacing: -0.5px; }
+    .hero h1 { font-weight: 800; letter-spacing: -1px; }
+    .hero h1 em { font-style: normal; font-weight: 300; }
+
+    .section-header .eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      letter-spacing: 3px;
+    }
+    .nav-link { font-family: 'Montserrat', sans-serif; font-weight: 500; }
+    .btn { font-family: 'Montserrat', sans-serif; font-weight: 600; letter-spacing: 0.2px; }
+
+    /* hero-stat num más compacto */
+    .hero-stat-num { font-family: 'Montserrat', sans-serif; font-weight: 800; }
+    .impact-num    { font-family: 'Montserrat', sans-serif; font-weight: 800; }
+    .intro-number-val { font-family: 'Montserrat', sans-serif; font-weight: 800; }
+    .area-card-title { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+
+    /* Footer */
+    .nav-logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+    .footer-logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+    .footer-tagline { font-style: italic; }
+  </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logos/logo.png" alt="Hidroriente" class="nav-logo-img">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link active">Inicio</a></li>
+        <li><a href="pages/sobre-nosotros.html" class="nav-link">Sobre Nosotros</a></li>
+        <li><a href="pages/social.html" class="nav-link">Social</a></li>
+        <li><a href="pages/ambiental.html" class="nav-link">Ambiental</a></li>
+        <li><a href="pages/noticias.html" class="nav-link">Noticias</a></li>
+        <li><a href="pages/contacto.html" class="nav-link nav-cta">
+          <span class="btn btn--primary" style="padding:10px 22px;font-size:.84rem">Contáctanos</span>
+        </a></li>
+      </ul>
+      <button class="nav-hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<nav class="nav-mobile">
+  <button class="nav-mobile-close" aria-label="Cerrar"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+  <a href="index.html" class="nav-link">Inicio</a>
+  <a href="pages/sobre-nosotros.html" class="nav-link">Sobre Nosotros</a>
+  <a href="pages/social.html" class="nav-link">Social y Comunitario</a>
+  <a href="pages/ambiental.html" class="nav-link">Ambiental</a>
+  <a href="pages/noticias.html" class="nav-link">Noticias</a>
+  <a href="pages/contacto.html" class="nav-link">Contacto</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="assets/images/hero-main.jpg" alt="Proyecto Hidroeléctrico Alto Machinaza" class="hero-bg-img" onerror="this.style.display='none'">
+  </div>
+
+  <div class="container hero-content">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      Zamora Chinchipe · Ecuador · 100 MW
+    </div>
+
+    <h1>Energía limpia.<br><em>Compromiso</em> humano.</h1>
+
+    <p class="hero-sub">
+      Generamos energía renovable impulsando desarrollo sostenible para las comunidades y el futuro del Ecuador. Proyecto Hidroeléctrico Alto Machinaza en el río Alto Machinaza.
+    </p>
+
+    <div class="hero-actions">
+      <a href="pages/sobre-nosotros.html" class="btn btn--primary">Conocer el proyecto</a>
+      <a href="pages/social.html" class="btn btn--outline">Impacto social</a>
+    </div>
+
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ══ INTRO INSTITUCIONAL ══ -->
+<section class="intro-block">
+  <div class="container">
+    <div class="intro-block-inner">
+      <div class="fade-up">
+        <div class="section-header">
+          <div class="eyebrow">Quiénes somos</div>
+          <h2>Transformamos la fuerza del agua en desarrollo sostenible.</h2>
+        </div>
+        <p>Hidroriente S.A. desarrolla el Proyecto Hidroeléctrico Alto Machinaza, una central de 100 MW ubicada en el río Alto Machinaza, provincia de Zamora Chinchipe. Con cuatro unidades de turbinas Pelton de tecnología alemana WKV, generamos energía limpia que se transmite a la subestación Bomboiza fortaleciendo el Sistema Nacional Interconectado.</p>
+        <p>Operamos con responsabilidad social, ambiental y técnica, comprometidos con las comunidades del territorio amazónico y el futuro energético del Ecuador.</p>
+        <a href="pages/sobre-nosotros.html" class="btn btn--outline-dark mt-24">Conocer más sobre Hidroriente</a>
+      </div>
+      <div class="intro-numbers stagger fade-up">
+        <div class="intro-number">
+          <span class="intro-number-val">100 MW</span>
+          <span class="intro-number-label">Potencia instalada</span>
+        </div>
+        <div class="intro-number">
+          <span class="intro-number-val">4</span>
+          <span class="intro-number-label">Turbinas Pelton WKV</span>
+        </div>
+        <div class="intro-number">
+          <span class="intro-number-val">Bomboiza</span>
+          <span class="intro-number-label">Subestación conectada</span>
+        </div>
+        <div class="intro-number">
+          <span class="intro-number-val">Zamora</span>
+          <span class="intro-number-label">Provincia beneficiada</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VIDEO CORPORATIVO ══ -->
+<section class="section video-section bg-off">
+  <div class="container">
+    <div class="video-layout">
+      <div class="video-text fade-up">
+        <div class="section-header">
+          <div class="eyebrow">Video institucional</div>
+          <h2>Conoce Hidroriente</h2>
+        </div>
+        <p>Una mirada a nuestra infraestructura, nuestra gente y nuestro compromiso con el territorio amazónico de Zamora Chinchipe.</p>
+        <p>Desde la captación en el río Alto Machinaza hasta la casa de máquinas, conoce cómo transformamos la fuerza del agua en energía limpia para Ecuador.</p>
+        <a href="#" class="btn btn--ghost mt-24">Ver más sobre el proyecto</a>
+      </div>
+      <div class="fade-up">
+        <div class="video-placeholder" data-video-url="https://www.youtube.com/embed/TU_VIDEO_ID">
+          <div class="img-placeholder" style="border-radius:inherit">
+            <span class="img-placeholder-icon bi bi-play-btn" aria-hidden="true"></span>
+            <span>Video Corporativo</span>
+            <small style="opacity:.4;font-size:.7rem">Reemplaza TU_VIDEO_ID con el ID de YouTube</small>
+          </div>
+          <div class="video-play">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ IMPACTO ══ -->
+<section class="section impact-section">
+  <div class="container">
+    <div class="section-header section-header--center fade-up" style="margin-bottom:48px">
+      <div class="eyebrow" style="justify-content:center;color:rgba(255,255,255,.65);letter-spacing:3px">Nuestro impacto</div>
+      <h2 style="color:white">Energía renovable con impacto real</h2>
+    </div>
+    <div class="impact-grid stagger">
+      <div class="impact-item">
+        <span class="impact-icon bi bi-people" aria-hidden="true"></span>
+        <span class="impact-num" data-count="12">12</span>
+        <span class="impact-label">Comunidades beneficiadas en Zamora Chinchipe</span>
+      </div>
+      <div class="impact-item">
+        <span class="impact-icon bi bi-tree" aria-hidden="true"></span>
+        <span class="impact-num" data-count="85" data-suffix="+">85+</span>
+        <span class="impact-label">Programas ambientales activos</span>
+      </div>
+      <div class="impact-item">
+        <span class="impact-icon bi bi-person-workspace" aria-hidden="true"></span>
+        <span class="impact-num" data-count="400" data-suffix="+">400+</span>
+        <span class="impact-label">Empleos directos generados</span>
+      </div>
+      <div class="impact-item">
+        <span class="impact-icon bi bi-lightning-charge" aria-hidden="true"></span>
+        <span class="impact-num">100 MW</span>
+        <span class="impact-label">Energía limpia renovable</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ÁREAS PRINCIPALES ══ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="eyebrow">Nuestras áreas</div>
+      <h2>Un proyecto integral</h2>
+      <p>Desarrollamos el proyecto con visión técnica, humana y ambiental, integrando cada dimensión del desarrollo sostenible.</p>
+    </div>
+    <div class="areas-grid stagger">
+      <div class="area-card">
+        <div class="area-card-bg">
+          <img src="assets/images/area-social.jpg" alt="Social y Comunitario" onerror="this.style.display='none'">
+        </div>
+        <div class="area-card-content">
+          <span class="area-card-icon bi bi-people" aria-hidden="true"></span>
+          <div class="area-card-title">Social y Comunitario</div>
+          <p class="area-card-desc">Salud, educación, desarrollo productivo e infraestructura para las comunidades de Zamora Chinchipe.</p>
+          <a href="pages/social.html" class="btn btn--ghost">Conocer más</a>
+        </div>
+      </div>
+      <div class="area-card">
+        <div class="area-card-bg">
+          <img src="assets/images/area-ambiental.jpg" alt="Ambiental" onerror="this.style.display='none'">
+        </div>
+        <div class="area-card-content">
+          <span class="area-card-icon bi bi-tree" aria-hidden="true"></span>
+          <div class="area-card-title">Ambiental</div>
+          <p class="area-card-desc">Monitoreo, reforestación, rescate de flora y fauna, y gestión ambiental responsable en la Amazonía.</p>
+          <a href="pages/ambiental.html" class="btn btn--ghost">Conocer más</a>
+        </div>
+      </div>
+      <div class="area-card">
+        <div class="area-card-bg">
+          <img src="assets/images/area-operaciones.jpg" alt="Operaciones" onerror="this.style.display='none'">
+        </div>
+        <div class="area-card-content">
+          <span class="area-card-icon bi bi-gear" aria-hidden="true"></span>
+          <div class="area-card-title">Operaciones</div>
+          <p class="area-card-desc">Cuatro turbinas Pelton WKV de Alemania, 100 MW de potencia y línea de transmisión a subestación Bomboiza.</p>
+          <a href="pages/sobre-nosotros.html" class="btn btn--ghost">Conocer más</a>
+        </div>
+      </div>
+      <div class="area-card">
+        <div class="area-card-bg">
+          <img src="assets/images/area-noticias.jpg" alt="Noticias" onerror="this.style.display='none'">
+        </div>
+        <div class="area-card-content">
+          <span class="area-card-icon bi bi-newspaper" aria-hidden="true"></span>
+          <div class="area-card-title">Noticias</div>
+          <p class="area-card-desc">Últimas novedades, avances del proyecto, actividades sociales y logros ambientales de Hidroriente.</p>
+          <a href="pages/noticias.html" class="btn btn--ghost">Ver noticias</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NOTICIAS DESTACADAS ══ -->
+<section class="section bg-off">
+  <div class="container">
+    <div class="section-header" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <div class="fade-up">
+        <div class="eyebrow">Últimas noticias</div>
+        <h2>Novedades del proyecto</h2>
+      </div>
+      <a href="pages/noticias.html" class="btn btn--outline-dark fade-up">Ver todas las noticias</a>
+    </div>
+    <div class="news-grid stagger">
+      <div class="news-card">
+        <div class="news-card-img">
+          <img src="assets/images/proyecto-foto.jpg" alt="Mantenimiento preventivo" onerror="this.style.display='none'">
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-meta"><span class="tag tag--green">Operaciones</span><span class="news-card-date">Mayo 2026</span></div>
+          <h4><a href="pages/noticia-detalle.html?id=10">Hidroriente fortalece plan de mantenimiento preventivo en Alto Machinaza</a></h4>
+          <p>Los equipos técnicos ejecutan inspecciones programadas para reforzar la operación segura y continua del proyecto.</p>
+          <a href="pages/noticia-detalle.html?id=10" class="btn btn--ghost">Leer más</a>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-card-img">
+          <img src="assets/images/24022026-_DSC4200.jpg" alt="Capacitación comunitaria" onerror="this.style.display='none'">
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-meta"><span class="tag tag--blue">Social</span><span class="news-card-date">Abril 2026</span></div>
+          <h4><a href="pages/noticia-detalle.html?id=11">Jornadas de capacitación comunitaria impulsan seguridad y empleo local</a></h4>
+          <p>Habitantes de comunidades cercanas participaron en talleres prácticos orientados a seguridad, oficio y empleabilidad.</p>
+          <a href="pages/noticia-detalle.html?id=11" class="btn btn--ghost">Leer más</a>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-card-img">
+          <img src="assets/images/area-ambiental.jpg" alt="Monitoreo ambiental" onerror="this.style.display='none'">
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-meta"><span class="tag tag--green">Ambiental</span><span class="news-card-date">Marzo 2026</span></div>
+          <h4><a href="pages/noticia-detalle.html?id=12">Monitoreo ambiental refuerza protección de la cuenca del río Alto Machinaza</a></h4>
+          <p>El programa ambiental mantiene controles periódicos de agua, flora y fauna en el área de influencia del proyecto.</p>
+          <a href="pages/noticia-detalle.html?id=12" class="btn btn--ghost">Leer más</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ══ -->
+<section class="section cta-section">
+  <div class="container fade-up">
+    <h2>Construimos energía limpia<br>con visión de futuro.</h2>
+    <p>Únete al compromiso de Hidroriente con la energía renovable, el ambiente y las comunidades de Zamora Chinchipe.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="pages/contacto.html" class="btn btn--primary">Contáctanos</a>
+      <a href="pages/sobre-nosotros.html" class="btn btn--outline">Conocer el proyecto</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logos/logo.png" alt="Hidroriente" style="height:70px;width:auto;object-fit:contain;filter:brightness(0) invert(1)" onerror="this.style.display='none'">
+          <div class="footer-logo-mark" id="footerFallback" style="display:none">H</div>
+        </div>
+        <p class="footer-tagline">"Energía limpia. Compromiso humano."</p>
+        <p class="footer-desc">Proyecto Hidroeléctrico Alto Machinaza · 100 MW · Río Alto Machinaza · Zamora Chinchipe, Ecuador.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social" title="Facebook">f</a>
+          <a href="#" class="footer-social" title="Instagram">ig</a>
+          <a href="#" class="footer-social" title="LinkedIn">in</a>
+          <a href="#" class="footer-social" title="YouTube"><i class="bi bi-youtube" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Empresa</h5>
+        <nav class="footer-links">
+          <a href="pages/sobre-nosotros.html">Sobre Nosotros</a>
+          <a href="pages/sobre-nosotros.html#historia">Historia</a>
+          <a href="pages/sobre-nosotros.html#infraestructura">Infraestructura</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h5>Responsabilidad</h5>
+        <nav class="footer-links">
+          <a href="pages/social.html">Social y Comunitario</a>
+          <a href="pages/ambiental.html">Ambiental</a>
+          <a href="pages/noticias.html">Noticias</a>
+          <a href="pages/contacto.html#canal-etico">Canal Ético</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <div class="footer-contact-item"><i class="bi bi-geo-alt" aria-hidden="true"></i><span>Zamora Chinchipe, Ecuador</span></div>
+        <div class="footer-contact-item"><i class="bi bi-envelope" aria-hidden="true"></i><span>info@hidroriente.com.ec</span></div>
+        <div class="footer-contact-item"><i class="bi bi-telephone" aria-hidden="true"></i><span>+593 7 XXX XXXX</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Hidroriente S.A. Todos los derechos reservados.</span>
+      <span class="footer-credit">Desarrollo y diseño: <a href="https://lsartstudios.com" target="_blank" rel="noopener">LS Art Gallery &amp; Studio</a></span>
+      <div style="display:flex;gap:20px">
+        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:3f950a81-88f4-4bac-9480-9a20771fda4f" target="_blank" rel="noopener">Política de privacidad</a>
+        <a href="#">Términos</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  // Footer logo fallback
+  const footerLogo = document.querySelector('.footer-logo img');
+  if (footerLogo) {
+    footerLogo.addEventListener('error', function() {
+      this.style.display = 'none';
+      document.getElementById('footerFallback').style.display = 'flex';
+    });
+  }
+</script>
+</body>
+</html>

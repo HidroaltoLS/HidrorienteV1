@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Últimas novedades del Proyecto Hidroeléctrico Alto Machinaza.">
+  <title>Noticias — Hidroriente S.A.</title>
+  <link rel="icon" type="image/png" href="../assets/icons/fabicon-hidroriente.png">
+  <link rel="apple-touch-icon" href="../assets/icons/fabicon-hidroriente.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    :root {
+      --green:       #4FA637;
+      --green-dark:  #2e6020;
+      --green-light: #93BF34;
+      --green-pale:  #edf7e8;
+      --green-mid:   #6db82e;
+      --font-display: 'Montserrat', sans-serif;
+      --font-body:    'Montserrat', sans-serif;
+    }
+
+    .nav-logo-img {
+      display: block !important;
+      height: 70px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s ease;
+    }
+
+    .site-header.scrolled .nav-logo-img {
+      filter: none;
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: .85rem;
+      font-weight: 500;
+      border: 1.5px solid var(--gray-200);
+      color: var(--gray-600);
+      background: var(--white);
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--green);
+      border-color: var(--green);
+      color: var(--white);
+    }
+
+    .news-grid-p {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .news-item {
+      display: none;
+    }
+
+    .news-item.show {
+      display: block;
+    }
+
+    .news-grid-p.stagger.visible > * {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media(max-width: 1024px) {
+      .news-grid-p {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width: 640px) {
+      .news-grid-p {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, #4FA637 0%, #93BF34 100%);
+    }
+
+    .hero-inner {
+      background: linear-gradient(135deg, #3F842C 0%, #6F9128 100%);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <nav class="nav">
+      <a href="../index.html" class="nav-logo">
+        <img src="../assets/logos/logo.png" alt="Hidroriente" class="nav-logo-img">
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html" class="nav-link">Inicio</a></li>
+        <li><a href="../pages/sobre-nosotros.html" class="nav-link">Sobre Nosotros</a></li>
+        <li><a href="../pages/social.html" class="nav-link">Social</a></li>
+        <li><a href="../pages/ambiental.html" class="nav-link">Ambiental</a></li>
+        <li><a href="../pages/noticias.html" class="nav-link active">Noticias</a></li>
+        <li><a href="../pages/contacto.html" class="nav-link nav-cta">
+          <span class="btn btn--primary" style="padding:10px 22px;font-size:.84rem">Contáctanos</span>
+        </a></li>
+      </ul>
+      <button class="nav-hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<nav class="nav-mobile">
+  <button class="nav-mobile-close" aria-label="Cerrar"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+  <a href="../index.html" class="nav-link">Inicio</a>
+  <a href="../pages/sobre-nosotros.html" class="nav-link">Sobre Nosotros</a>
+  <a href="../pages/social.html" class="nav-link">Social</a>
+  <a href="../pages/ambiental.html" class="nav-link">Ambiental</a>
+  <a href="../pages/noticias.html" class="nav-link">Noticias</a>
+  <a href="../pages/contacto.html" class="nav-link">Contacto</a>
+</nav>
+
+<!-- ══ HERO INTERNO ══ -->
+<section class="hero-inner">
+  <div class="hero-bg">
+    <img src="../assets/images/hero-noticias.jpg" alt="Noticias" class="hero-bg-img" onerror="this.style.display='none'">
+  </div>
+  <div class="container hero-inner-content">
+    <div class="breadcrumb">
+      <a href="../index.html">Inicio</a>
+      <span>/</span>
+      <span>Noticias</span>
+    </div>
+    <h1>Noticias</h1>
+  </div>
+</section>
+
+<!-- ══ CONTENIDO PRINCIPAL ══ -->
+<section class="section">
+  <div class="container">
+    <div class="filter-bar fade-up">
+      <button class="filter-btn active" data-cat="all">Todas</button>
+      <button class="filter-btn" data-cat="operaciones">Operaciones</button>
+      <button class="filter-btn" data-cat="social">Social</button>
+      <button class="filter-btn" data-cat="ambiental">Ambiental</button>
+      <button class="filter-btn" data-cat="seguridad">Seguridad</button>
+      <button class="filter-btn" data-cat="institucional">Institucional</button>
+    </div>
+
+    <div class="news-grid-p stagger" id="newsGrid">
+      <!-- Se cargará dinámicamente -->
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA SECTION ══ -->
+<section class="section cta-section">
+  <div class="container fade-up">
+    <h2>¿Tienes alguna consulta?</h2>
+    <p>Para información adicional sobre el proyecto o nuestras actividades, contáctanos.</p>
+    <a href="contacto.html" class="btn btn--primary">Contáctanos</a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="../assets/logos/logo.png" alt="Hidroriente" style="height:70px;width:auto;object-fit:contain;filter:brightness(0) invert(1)" onerror="this.style.display='none'">
+          <div class="footer-logo-mark" id="footerFallback" style="display:none">H</div>
+        </div>
+        <p class="footer-tagline">"Energía limpia. Compromiso humano."</p>
+        <p class="footer-desc">Proyecto Hidroeléctrico Alto Machinaza · 100 MW · Zamora Chinchipe, Ecuador.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social">f</a>
+          <a href="#" class="footer-social">ig</a>
+          <a href="#" class="footer-social">in</a>
+          <a href="#" class="footer-social"><i class="bi bi-youtube" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Empresa</h5>
+        <nav class="footer-links">
+          <a href="../pages/sobre-nosotros.html">Sobre Nosotros</a>
+          <a href="../pages/social.html">Social</a>
+          <a href="../pages/ambiental.html">Ambiental</a>
+          <a href="../pages/noticias.html">Noticias</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h5>Responsabilidad</h5>
+        <nav class="footer-links">
+          <a href="../pages/social.html">Social</a>
+          <a href="../pages/ambiental.html">Ambiental</a>
+          <a href="../pages/contacto.html#canal-etico">Canal Ético</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <div class="footer-contact-item"><i class="bi bi-geo-alt" aria-hidden="true"></i><span>Zamora Chinchipe, Ecuador</span></div>
+        <div class="footer-contact-item"><i class="bi bi-envelope" aria-hidden="true"></i><span>info@hidroriente.com.ec</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Hidroriente S.A. Todos los derechos reservados.</span>
+      <span class="footer-credit">Desarrollo y diseño: <a href="https://lsartstudios.com" target="_blank" rel="noopener">LS Art Gallery &amp; Studio</a></span>
+      <div style="display:flex;gap:20px">
+        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:3f950a81-88f4-4bac-9480-9a20771fda4f" target="_blank" rel="noopener">Política de privacidad</a>
+        <a href="#">Términos</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../data/noticias.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  const loadNewsData = async () => {
+    if (window.HIDRORIENTE_NOTICIAS) {
+      return window.HIDRORIENTE_NOTICIAS;
+    }
+
+    const response = await fetch('../data/noticias.json');
+    return response.json();
+  };
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const newsGrid = document.getElementById('newsGrid');
+
+    try {
+      const data = await loadNewsData();
+
+      if (!data.noticias || data.noticias.length === 0) {
+        newsGrid.innerHTML = '<p style="grid-column:1/-1;color:var(--gray-600)">Pronto publicaremos nuevas noticias.</p>';
+        newsGrid.classList.add('visible');
+        return;
+      }
+      
+      // Mapeo de categorías a tipos de tag
+      const getCategoryTag = (cat) => {
+        if (cat === 'ambiental') return 'tag--green';
+        if (cat === 'social') return 'tag--blue';
+        return 'tag--gray';
+      };
+
+      const categoryFallbackImages = {
+        operaciones: '../assets/images/proyecto-foto.jpg',
+        social: '../assets/images/24022026-_DSC4200.jpg',
+        ambiental: '../assets/images/area-ambiental.jpg',
+        seguridad: '../assets/images/area-operaciones.jpg',
+        institucional: '../assets/images/hero-sobre.jpg'
+      };
+
+      const resolveMediaPath = (src) => {
+        if (!src) return '';
+        if (/^(https?:|data:|\/|\.\/|\.\.\/)/.test(src)) return src;
+        return '../' + src.replace(/^\/+/, '');
+      };
+
+      const getNewsImage = (noticia) => {
+        if (noticia.imagen) return resolveMediaPath(noticia.imagen);
+        if (noticia.poster) return resolveMediaPath(noticia.poster);
+        return categoryFallbackImages[noticia.categoria] || '../assets/images/hero-main.jpg';
+      };
+
+      // Renderizar noticias
+      newsGrid.innerHTML = data.noticias.map(noticia => `
+        <div class="news-card news-item show" data-cat="${noticia.categoria}">
+          <div class="news-card-img">
+            <img src="${getNewsImage(noticia)}" alt="${noticia.titulo}" onerror="this.style.display='none'">
+          </div>
+          <div class="news-card-body">
+            <div class="news-card-meta">
+              <span class="tag ${getCategoryTag(noticia.categoria)}">${noticia.categoria.charAt(0).toUpperCase() + noticia.categoria.slice(1)}</span>
+              <span class="news-card-date">${noticia.fecha}</span>
+            </div>
+            <h4><a href="noticia-detalle.html?id=${noticia.id}">${noticia.titulo}</a></h4>
+            <p>${noticia.descripcion}</p>
+            <a href="noticia-detalle.html?id=${noticia.id}" class="btn btn--ghost">Leer más</a>
+          </div>
+        </div>
+      `).join('');
+      newsGrid.classList.add('visible');
+
+      // Filtrado de categorías
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          
+          const cat = this.dataset.cat;
+          document.querySelectorAll('.news-item').forEach(item => {
+            item.classList.toggle('show', cat === 'all' || item.dataset.cat === cat);
+          });
+        });
+      });
+    } catch (error) {
+      console.error('Error cargando noticias:', error);
+      newsGrid.innerHTML = '<p style="grid-column:1/-1;color:var(--gray-600)">No se pudieron cargar las noticias en este momento.</p>';
+      newsGrid.classList.add('visible');
+    }
+  });
+</script>
+</body>
+</html>
