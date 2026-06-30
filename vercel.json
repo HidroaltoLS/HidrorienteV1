@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "hidroriente 2/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "^/$", "dest": "/hidroriente 2/index.html" },
+    { "src": "^/(.*)$", "dest": "/hidroriente 2/$1" }
+  ]
+}
