@@ -75,24 +75,33 @@
 
     /* Cuadros de datos: mismo lenguaje visual, fuera del hero */
     .intro-numbers {
-      gap: 1px;
-      overflow: hidden;
-      border: 1px solid rgba(79,166,55,0.16);
-      border-radius: 12px;
-      background: rgba(79,166,55,0.12);
-      box-shadow: 0 18px 44px rgba(47,107,43,0.12);
+      gap: 18px;
+      overflow: visible;
+      border: 0 !important;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
     }
     .intro-number {
-      border-left: 0;
-      border-radius: 0;
+      border: 1px solid rgba(79,166,55,0.18) !important;
+      border-radius: 18px;
       background: rgba(255,255,255,0.9);
       padding: 28px 24px;
       text-align: center;
+      box-shadow: 0 12px 30px rgba(47,107,43,0.10), inset 0 1px 0 rgba(255,255,255,0.75);
       transition: background 0.25s ease, transform 0.25s ease;
     }
     .intro-number:hover {
       background: #fff;
       transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .intro-numbers { gap: 14px; }
+      .intro-number {
+        border-radius: 16px;
+        padding: 24px 18px;
+      }
     }
     .intro-number-val { color: #2e6020; }
     .intro-number-label {
