@@ -192,6 +192,18 @@
     .nav-logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; }
     .footer-logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; }
     .footer-tagline { font-style: italic; }
+
+    .project-pulse { background: #f7faf6; }
+    .project-pulse__layout { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 48px; align-items: center; }
+    .project-pulse__intro { max-width: 480px; }
+    .project-pulse__intro p { margin-top: 16px; }
+    .project-pulse__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .project-pulse__item { padding: 24px; border-radius: 18px; background: #fff; border: 1px solid rgba(79,166,55,.13); box-shadow: 0 12px 32px rgba(28,77,35,.08); }
+    .project-pulse__item strong { display: block; color: #2e6020; font-size: clamp(1.45rem, 3vw, 2.1rem); line-height: 1; margin-bottom: 9px; }
+    .project-pulse__item span { color: #5a6b63; font-size: .85rem; line-height: 1.4; }
+    .project-pulse__note { grid-column: 1 / -1; margin: 2px 0 0; color: #5a6b63; font-size: .78rem; }
+    @media (max-width: 800px) { .project-pulse__layout { grid-template-columns: 1fr; gap: 30px; } }
+    @media (max-width: 480px) { .project-pulse__grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -292,6 +304,27 @@
           <span class="intro-number-label">Provincia beneficiada</span>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INDICADORES DEL PROYECTO ══ -->
+<section class="section project-pulse" aria-labelledby="indicadores-title">
+  <div class="container project-pulse__layout">
+    <div class="project-pulse__intro fade-up">
+      <div class="section-header" style="margin-bottom:0">
+        <div class="eyebrow">El proyecto en cifras</div>
+        <h2 id="indicadores-title">Información clara para seguir el avance.</h2>
+      </div>
+      <p>Presentamos los datos estructurales que definen el Proyecto Hidroeléctrico Alto Machinaza, sin mostrar lecturas simuladas como datos en tiempo real.</p>
+      <a href="pages/sobre-nosotros.html#infraestructura" class="btn btn--outline-dark mt-24">Conocer la infraestructura</a>
+    </div>
+    <div class="project-pulse__grid stagger">
+      <article class="project-pulse__item"><strong>100 MW</strong><span>Potencia instalada del proyecto.</span></article>
+      <article class="project-pulse__item"><strong>4</strong><span>Unidades de turbinas Pelton WKV.</span></article>
+      <article class="project-pulse__item"><strong>Alto Machinaza</strong><span>Río que impulsa el proyecto en Zamora Chinchipe.</span></article>
+      <article class="project-pulse__item"><strong>Bomboiza</strong><span>Subestación de conexión al Sistema Nacional Interconectado.</span></article>
+      <p class="project-pulse__note">Los indicadores operativos se publican mediante comunicados verificados en la sección de Noticias.</p>
     </div>
   </div>
 </section>

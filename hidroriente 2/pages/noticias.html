@@ -155,12 +155,12 @@
 <section class="section">
   <div class="container">
     <div class="filter-bar fade-up">
-      <button class="filter-btn active" data-cat="all">Todas</button>
-      <button class="filter-btn" data-cat="operaciones">Operaciones</button>
-      <button class="filter-btn" data-cat="social">Social</button>
-      <button class="filter-btn" data-cat="ambiental">Ambiental</button>
-      <button class="filter-btn" data-cat="seguridad">Seguridad</button>
-      <button class="filter-btn" data-cat="institucional">Institucional</button>
+      <button class="filter-btn active" type="button" data-cat="all" aria-pressed="true">Todas</button>
+      <button class="filter-btn" type="button" data-cat="operaciones" aria-pressed="false">Operaciones</button>
+      <button class="filter-btn" type="button" data-cat="social" aria-pressed="false">Social</button>
+      <button class="filter-btn" type="button" data-cat="ambiental" aria-pressed="false">Ambiental</button>
+      <button class="filter-btn" type="button" data-cat="seguridad" aria-pressed="false">Seguridad</button>
+      <button class="filter-btn" type="button" data-cat="institucional" aria-pressed="false">Institucional</button>
     </div>
 
     <div class="news-grid-p stagger" id="newsGrid">
@@ -284,7 +284,7 @@
       newsGrid.innerHTML = data.noticias.map(noticia => `
         <div class="news-card news-item show" data-cat="${noticia.categoria}">
           <div class="news-card-img">
-            <img src="${getNewsImage(noticia)}" alt="${noticia.titulo}" onerror="this.style.display='none'">
+            <img src="${getNewsImage(noticia)}" alt="${noticia.titulo}" loading="lazy" decoding="async" onerror="this.style.display='none'">
           </div>
           <div class="news-card-body">
             <div class="news-card-meta">
@@ -302,8 +302,9 @@
       // Filtrado de categorías
       document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', function() {
-          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
           this.classList.add('active');
+          this.setAttribute('aria-pressed', 'true');
           
           const cat = this.dataset.cat;
           document.querySelectorAll('.news-item').forEach(item => {
