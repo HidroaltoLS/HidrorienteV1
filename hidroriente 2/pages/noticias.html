@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Últimas novedades del Proyecto Hidroeléctrico Alto Machinaza.">
-  <title>Noticias — Hidroriente S.A.</title>
+  <meta name="description" content="Novedades verificadas sobre operación, ambiente y comunidad del Proyecto Hidroeléctrico Alto Machinaza.">
+  <title>Noticias del Proyecto Alto Machinaza | Hidroriente</title>
   <link rel="icon" type="image/png" href="../assets/icons/fabicon-hidroriente.png">
   <link rel="apple-touch-icon" href="../assets/icons/fabicon-hidroriente.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -99,6 +99,20 @@
       background: linear-gradient(135deg, #3F842C 0%, #6F9128 100%);
     }
   </style>
+
+  <link rel="canonical" href="https://hidroriente-v1.vercel.app/pages/noticias.html">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Hidroriente S.A.">
+  <meta property="og:locale" content="es_EC">
+  <meta property="og:url" content="https://hidroriente-v1.vercel.app/pages/noticias.html">
+  <meta property="og:title" content="Noticias del Proyecto Alto Machinaza | Hidroriente">
+  <meta property="og:description" content="Novedades verificadas sobre operación, ambiente y comunidad del Proyecto Hidroeléctrico Alto Machinaza.">
+  <meta property="og:image" content="https://hidroriente-v1.vercel.app/assets/images/hero-main.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Noticias del Proyecto Alto Machinaza | Hidroriente">
+  <meta name="twitter:description" content="Novedades verificadas sobre operación, ambiente y comunidad del Proyecto Hidroeléctrico Alto Machinaza.">
+  <meta name="twitter:image" content="https://hidroriente-v1.vercel.app/assets/images/hero-main.jpg">
 </head>
 <body>
 
@@ -155,12 +169,12 @@
 <section class="section">
   <div class="container">
     <div class="filter-bar fade-up">
-      <button class="filter-btn active" data-cat="all">Todas</button>
-      <button class="filter-btn" data-cat="operaciones">Operaciones</button>
-      <button class="filter-btn" data-cat="social">Social</button>
-      <button class="filter-btn" data-cat="ambiental">Ambiental</button>
-      <button class="filter-btn" data-cat="seguridad">Seguridad</button>
-      <button class="filter-btn" data-cat="institucional">Institucional</button>
+      <button class="filter-btn active" type="button" data-cat="all" aria-pressed="true">Todas</button>
+      <button class="filter-btn" type="button" data-cat="operaciones" aria-pressed="false">Operaciones</button>
+      <button class="filter-btn" type="button" data-cat="social" aria-pressed="false">Social</button>
+      <button class="filter-btn" type="button" data-cat="ambiental" aria-pressed="false">Ambiental</button>
+      <button class="filter-btn" type="button" data-cat="seguridad" aria-pressed="false">Seguridad</button>
+      <button class="filter-btn" type="button" data-cat="institucional" aria-pressed="false">Institucional</button>
     </div>
 
     <div class="news-grid-p stagger" id="newsGrid">
@@ -284,7 +298,7 @@
       newsGrid.innerHTML = data.noticias.map(noticia => `
         <div class="news-card news-item show" data-cat="${noticia.categoria}">
           <div class="news-card-img">
-            <img src="${getNewsImage(noticia)}" alt="${noticia.titulo}" onerror="this.style.display='none'">
+            <img src="${getNewsImage(noticia)}" alt="${noticia.titulo}" loading="lazy" decoding="async" onerror="this.style.display='none'">
           </div>
           <div class="news-card-body">
             <div class="news-card-meta">
@@ -302,8 +316,9 @@
       // Filtrado de categorías
       document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', function() {
-          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
           this.classList.add('active');
+          this.setAttribute('aria-pressed', 'true');
           
           const cat = this.dataset.cat;
           document.querySelectorAll('.news-item').forEach(item => {
