@@ -204,7 +204,28 @@
     .project-pulse__note { grid-column: 1 / -1; margin: 2px 0 0; color: #5a6b63; font-size: .78rem; }
     @media (max-width: 800px) { .project-pulse__layout { grid-template-columns: 1fr; gap: 30px; } }
     @media (max-width: 480px) { .project-pulse__grid { grid-template-columns: 1fr; } }
+  
+    .project-story { background: #f7faf6; }
+    .project-story__layout { display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:48px; align-items:center; }
+    .project-story__copy { max-width:480px; }
+    .project-story__media { position:relative; min-height:420px; margin:0; overflow:hidden; border-radius:18px; background:#173116; box-shadow:0 24px 56px rgba(27,76,35,.18); }
+    .project-story__media::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 45%,rgba(12,34,17,.82)); }
+    .project-story__media img { width:100%; height:100%; min-height:420px; object-fit:cover; display:block; }
+    .project-story__media figcaption { position:absolute; z-index:1; left:28px; right:28px; bottom:24px; color:#fff; }
+    .project-story__media figcaption span { display:block; margin-bottom:5px; color:#c5ed8f; font-size:.73rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; }
+    .project-story__media figcaption strong { font-size:clamp(1.25rem,2.4vw,1.85rem); }
+    @media(max-width:800px){.project-story__layout{grid-template-columns:1fr;gap:28px}.project-story__media,.project-story__media img{min-height:300px}}
   </style>
+
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="Hidroriente S.A.">
+  <meta property="og:site_name" content="Hidroriente S.A.">
+  <meta property="og:locale" content="es_EC">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hidroriente S.A. — Proyecto Alto Machinaza">
+  <meta name="twitter:description" content="100 MW de energía renovable para Ecuador, con compromiso social y ambiental en Zamora Chinchipe.">
+  <meta name="twitter:image" content="https://hidroriente-v1.vercel.app/assets/images/hero-main.jpg">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Hidroriente S.A.","url":"https://hidroriente-v1.vercel.app/","logo":"https://hidroriente-v1.vercel.app/assets/logos/logo.png","description":"Desarrolla el Proyecto Hidroeléctrico Alto Machinaza en Zamora Chinchipe, Ecuador.","sameAs":["https://www.instagram.com/hidroriente/","https://ec.linkedin.com/company/hidroriente","https://www.youtube.com/@hidroriente"]},{"@type":"WebSite","name":"Hidroriente S.A.","url":"https://hidroriente-v1.vercel.app/","inLanguage":"es-EC"}]}</script>
 </head>
 <body>
 
@@ -329,32 +350,21 @@
   </div>
 </section>
 
-<!-- ══ VIDEO CORPORATIVO ══ -->
-<section class="section video-section bg-off">
-  <div class="container">
-    <div class="video-layout">
-      <div class="video-text fade-up">
-        <div class="section-header">
-          <div class="eyebrow">Video institucional</div>
-          <h2>Conoce Hidroriente</h2>
-        </div>
-        <p>Una mirada a nuestra infraestructura, nuestra gente y nuestro compromiso con el territorio amazónico de Zamora Chinchipe.</p>
-        <p>Desde la captación en el río Alto Machinaza hasta la casa de máquinas, conoce cómo transformamos la fuerza del agua en energía limpia para Ecuador.</p>
-        <a href="pages/sobre-nosotros.html" class="btn btn--ghost mt-24">Ver más sobre el proyecto</a>
+<!-- ══ HISTORIA VISUAL ══ -->
+<section class="section project-story">
+  <div class="container project-story__layout">
+    <div class="project-story__copy fade-up">
+      <div class="section-header">
+        <div class="eyebrow">El proyecto, de cerca</div>
+        <h2>Ingeniería que convive con el territorio.</h2>
       </div>
-      <div class="fade-up">
-        <div class="video-placeholder" data-video-url="https://www.youtube.com/embed/TU_VIDEO_ID">
-          <div class="img-placeholder" style="border-radius:inherit">
-            <span class="img-placeholder-icon bi bi-play-btn" aria-hidden="true"></span>
-            <span>Video Corporativo</span>
-            <small style="opacity:.4;font-size:.7rem">Reemplaza TU_VIDEO_ID con el ID de YouTube</small>
-          </div>
-          <div class="video-play">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-        </div>
-      </div>
+      <p>Conoce la infraestructura, el trabajo técnico y el compromiso que acompañan cada etapa de Alto Machinaza.</p>
+      <a href="pages/sobre-nosotros.html#infraestructura" class="btn btn--outline-dark mt-24">Explorar la infraestructura</a>
     </div>
+    <figure class="project-story__media fade-up">
+      <img src="assets/images/proyecto-foto.jpg" alt="Infraestructura del Proyecto Hidroeléctrico Alto Machinaza" loading="lazy">
+      <figcaption><span>Alto Machinaza</span><strong>100 MW de energía renovable</strong></figcaption>
+    </figure>
   </div>
 </section>
 
